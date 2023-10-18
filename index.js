@@ -109,8 +109,11 @@ app.use((req, res, next) => {
 
 // Маршрут для добавления записи
 app.post('/api/records', (req, res) => {
-    const body = JSON.parse(req.body)
-    const { title, content, date } = body;
+    console.log('req.body is:', req.body)
+    // const body = JSON.parse(req.body)
+    // const { title, content, date } = body;
+    // const body = JSON.parse(req.body)
+    const { title, content, date } = req.body;
     const newRecord = new Record({ title, content, date });
 
     newRecord.save()
