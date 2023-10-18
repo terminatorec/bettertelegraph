@@ -95,7 +95,7 @@ mongoose.connect('mongodb+srv://admin:zuzjKxEG7hFj8MjB@cluster0.padny.mongodb.ne
 const Record = mongoose.model('Record', {
     title: String,
     content: String,
-    uniqueAddress: String,
+    date: String,
 });
 
 app.use(bodyParser.json());
@@ -109,8 +109,8 @@ app.use((req, res, next) => {
 
 // Маршрут для добавления записи
 app.post('/api/records', (req, res) => {
-    const { title, content, uniqueAddress } = req.body;
-    const newRecord = new Record({ title, content, uniqueAddress });
+    const { title, content, date } = req.body;
+    const newRecord = new Record({ title, content, date });
 
     newRecord.save()
         .then((record) => {
